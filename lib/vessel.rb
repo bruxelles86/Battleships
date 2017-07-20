@@ -6,6 +6,4 @@ class Vessel
         @vessel_lengths = { battleship: 4, cruiser: 3, destroyer: 2, submarine: 1 }
         @length = @vessel_lengths[vessel_type]
     end
-    
-    
 end
