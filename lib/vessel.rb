@@ -1,5 +1,11 @@
 class Vessel
+    attr_reader :type, :length
+    
     def initialize(vessel_type)
-        
+        @type = vessel_type
+        @vessel_lengths = { battleship: 4,  }
+        @length = @vessel_lengths[vessel_type]
     end
+    
+    
 end
