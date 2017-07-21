@@ -1,8 +1,8 @@
-class Grid
-    attr_reader :squares
+class Battlefield
+    attr_reader :grid
     
     def initialize
-        @squares = empty_grid(10,10)    
+        @grid = empty_grid(10,10)    
     end
     
     private

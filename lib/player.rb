@@ -7,16 +7,10 @@ class Player
     end
     
     def new_fleet(vessel_class)
-        [ vessel_class.new(:battleship),
-          vessel_class.new(:cruiser),
-          vessel_class.new(:cruiser),
-          vessel_class.new(:destroyer),
-          vessel_class.new(:destroyer),
-          vessel_class.new(:destroyer),
-          vessel_class.new(:submarine),
-          vessel_class.new(:submarine),
-          vessel_class.new(:submarine),
-          vessel_class.new(:submarine)
-        ]
+        vessels = [ vessel_class.new(:battleship) ]
+        2.times { vessels.push(vessel_class.new(:cruiser)) }
+        3.times { vessels.push(vessel_class.new(:destroyer)) }
+        4.times { vessels.push(vessel_class.new(:submarine)) } 
+        return vessels
     end
 end
