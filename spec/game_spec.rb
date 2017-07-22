@@ -1,4 +1,4 @@
-require_relative '../app.rb'
+require 'game'
 
 describe Game do
     let(:game) { Game.new }

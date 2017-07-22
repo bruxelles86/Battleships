@@ -1,4 +1,4 @@
-require_relative '../app.rb'
+require 'player'
 
 describe Player do
     before(:each) do

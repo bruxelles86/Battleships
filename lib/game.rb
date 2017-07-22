@@ -1,3 +1,5 @@
+require 'game'
+
 class Game
     attr_reader :playing
     

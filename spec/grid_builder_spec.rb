@@ -1,4 +1,4 @@
-require_relative '../app.rb'
+require 'grid_builder'
 
 describe GridBuilder do
     it 'generates a 10 x 10 grid' do

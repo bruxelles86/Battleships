@@ -1,4 +1,4 @@
-require_relative '../app.rb'
+require 'vessel'
 
 describe Vessel do
     it 'Instantiates battleships with a correct length' do
