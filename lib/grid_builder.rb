@@ -1,14 +1,14 @@
 class GridBuilder
-    def initialize
+    def initialize(square_class)
         @alphabet = 'A'.upto('Z').to_a
-        @empty_square = {}
+        @square_class = square_class
     end
     
     def new_grid(x=10, y=10)
         grid = {}
         for i in (1..y) do
             line = []
-            x.times { line.push(@empty_square) }
+            x.times { line.push(@square_class.new) }
             key = @alphabet[i-1]
             grid[key] = line
         end
