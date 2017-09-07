@@ -2,13 +2,20 @@ require 'player'
 
 describe Player do
     before(:each) do
-        allow(vessel).to receive(:new).and_return(vessel)
+        allow(vesselclass).to receive(:new).and_return(vessel)
     end
     
+    let(:vesselclass) { double }
     let(:vessel) { double }
     
     it 'starts the game by instantiating ten vessels' do
-        player = Player.new(vessel)
+        player = Player.new(vesselclass)
         expect(player.vessel_class).to have_received(:new).exactly(10).times
+    end
+    
+    it 'is not ready to play until all vessels have been placed' do
+        allow(vessel).to receive(:placed).and_return(false)
+        player = Player.new(vesselclass)
+        expect(player.ready?).to eq false
     end
 end
