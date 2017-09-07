@@ -18,4 +18,10 @@ describe Player do
         player = Player.new(vesselclass)
         expect(player.ready?).to eq false
     end
+    
+    it 'is ready when all vessels are placed' do
+        allow(vessel).to receive(:placed).and_return(true)
+        player = Player.new(vesselclass)
+        expect(player.ready?).to eq true
+    end
 end

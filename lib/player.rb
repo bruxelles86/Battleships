@@ -13,4 +13,8 @@ class Player
         4.times { vessels.push(vessel_class.new(:submarine)) } 
         return vessels
     end
+    
+    def ready?
+        @vessels.all? { |vessel| vessel.placed == true }
+    end
 end
