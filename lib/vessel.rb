@@ -1,5 +1,6 @@
 class Vessel
     attr_reader :type, :length
+    attr_accessor :placed
     
     def initialize(vessel_type)
         @type = vessel_type
