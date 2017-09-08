@@ -27,4 +27,9 @@ describe Battlefield do
         battlefield.place(vessel, :C6, :F6)
         expect(battlefield.grid).to eq complete_grid1
     end
+    
+    it 'does not place a ship if the given coordinates are not a vertical or horizontal line' do
+        battlefield.place(vessel, :C6, :D3)
+        expect(battlefield.grid).to eq complete_grid1
+    end
 end
