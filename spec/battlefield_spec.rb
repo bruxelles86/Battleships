@@ -23,5 +23,8 @@ describe Battlefield do
         expect(battlefield.grid).to eq complete_grid2
     end
   
-   
+    it 'does not place a ship if the given coordinates don\'t match ship length' do
+        battlefield.place(vessel, :C6, :F6)
+        expect(battlefield.grid).to eq complete_grid1
+    end
 end
