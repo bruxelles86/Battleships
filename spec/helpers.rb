@@ -18,6 +18,14 @@ module Helpers
       grid["A"][4].occupied = true
       return grid
    end
+   
+   def complete_grid2
+      grid = empty_grid
+      grid["C"][5].occupied = true
+      grid["D"][5].occupied = true
+      grid["E"][5].occupied = true
+      return grid
+   end
 end
 
 class FakeSquare

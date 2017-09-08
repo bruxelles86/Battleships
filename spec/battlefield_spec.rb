@@ -17,5 +17,11 @@ describe Battlefield do
         battlefield.place(vessel, :A3, :A5)
         expect(battlefield.grid).to eq complete_grid1
     end
+    
+    it 'puts vessels in the correct squares when placed vertically' do
+        battlefield.place(vessel, :C6, :E6)
+        expect(battlefield.grid).to eq complete_grid2
+    end
   
+   
 end
