@@ -5,8 +5,8 @@ describe GridBuilder do
         allow(square_class).to receive(:new).and_return(square)
     end
     
-    let(:square_class) { double }
-    let(:square) { double }
+    let(:square_class) { double "square_class" }
+    let(:square) { double "square" }
         
     it 'generates a 10 x 10 grid' do
         grid_builder = GridBuilder.new(square_class)

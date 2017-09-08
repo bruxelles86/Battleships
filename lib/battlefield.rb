@@ -6,4 +6,6 @@ class Battlefield
         @grid = @grid_builder.new_grid
     end
     
+    
+    
 end

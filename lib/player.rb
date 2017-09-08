@@ -1,9 +1,10 @@
 class Player
     attr_reader :vessel_class
 
-    def initialize(vessel_class)
+    def initialize(vessel_class, battlefield)
         @vessel_class = vessel_class
         @vessels = new_fleet(@vessel_class)
+        @battlefield = battlefield
     end
     
     def new_fleet(vessel_class)
