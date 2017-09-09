@@ -11,20 +11,14 @@ module Helpers
        return grid
    end
    
-   def complete_grid1
-      grid = empty_grid
-      grid["A"][2].occupied = true
-      grid["A"][3].occupied = true
-      grid["A"][4].occupied = true
-      return grid
-   end
-   
-   def complete_grid2
-      grid = empty_grid
-      grid["C"][5].occupied = true
-      grid["D"][5].occupied = true
-      grid["E"][5].occupied = true
-      return grid
+   def count_occupied
+      tally = 0
+      battlefield.grid.each do |key, line|
+            line.each_with_index do |square, index|
+                 tally += 1 if square.occupied == true
+            end
+      end
+      return tally
    end
 end
 

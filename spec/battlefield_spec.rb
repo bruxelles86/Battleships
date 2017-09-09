@@ -18,6 +18,7 @@ describe Battlefield do
         expect(battlefield.grid["A"][2].occupied).to eq true
         expect(battlefield.grid["A"][3].occupied).to eq true
         expect(battlefield.grid["A"][4].occupied).to eq true
+        expect(count_occupied).to eq(3)
     end
     
     it 'puts vessels in the correct squares when placed vertically' do
@@ -25,17 +26,21 @@ describe Battlefield do
         expect(battlefield.grid["C"][5].occupied).to eq true
         expect(battlefield.grid["D"][5].occupied).to eq true
         expect(battlefield.grid["E"][5].occupied).to eq true
+        expect(count_occupied).to eq(3)
     end
   
     it 'does not place a ship if the given coordinates don\'t match ship length' do
-        empty_grid = battlefield.grid
         battlefield.place(vessel, :C6, :F6)
-        expect(battlefield.grid).to eq empty_grid
+        expect(count_occupied).to eq(0)
     end
     
     it 'does not place a ship if the given coordinates are not a vertical or horizontal line' do
-        empty_grid = battlefield.grid
         battlefield.place(vessel, :C6, :D3)
-        expect(battlefield.grid).to eq empty_grid
+        expect(count_occupied).to eq(0)
+    end
+    
+    it 'does not place a ship if the gives coordinates fall outside the grid' do
+        battlefield.place(vessel, :E10, :E12)
+        expect(count_occupied).to eq(0)
     end
 end

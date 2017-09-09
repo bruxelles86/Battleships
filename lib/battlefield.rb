@@ -7,6 +7,6 @@ class Battlefield
     end
     
     def place(vessel, coord1, coord2)
-
+        
     end
 end
