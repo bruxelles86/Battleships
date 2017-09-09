@@ -6,6 +6,7 @@ class Battlefield
         @grid = @grid_builder.new_grid
     end
     
-    
-    
+    def place(vessel, coord1, coord2)
+
+    end
 end
