@@ -41,4 +41,23 @@ class Battlefield
             return false
         end
     end
+    
+    def coords_vacant?(coord1, coord2, grid)
+        num1 = coord1.to_s.slice(1..-1).to_i
+        num2 = coord2.to_s.slice(1..-1).to_i
+        same_column = true if num1 == num2
+        same_line = true if grid[(coord1[0].to_s)] == grid[(coord2[0].to_s)]
+        if same_line
+            grid[coord1[0].to_s][num1-1..num2-1].each do |square|
+                return false if square.occupied == true
+            end
+        end
+        if same_column
+            lines = @alphabet[@alphabet.index(coord1[0].to_s)..@alphabet.index(coord2[0].to_s)]
+            lines.each do |line|
+                return false if grid[line][num1-1].occupied == true
+            end
+        end
+        return true
+    end
 end
