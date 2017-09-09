@@ -2,6 +2,7 @@ class Battlefield
     attr_reader :grid
     
     def initialize(grid_builder_class)
+        @alphabet = 'A'.upto('Z').to_a
         @grid_builder = grid_builder_class.new
         @grid = @grid_builder.new_grid
     end
@@ -27,5 +28,17 @@ class Battlefield
         squares_exist = true if nums_above_1 && grid[(coord1[0].to_s)][num1-1] && grid[(coord2[0].to_s)][num2-1]
         return true if lines_exist && squares_exist
         return false
+    end
+    
+    def matches_vessel_length?(vessel, coord1, coord2, grid)
+        num1 = coord1.to_s.slice(1..-1).to_i
+        num2 = coord2.to_s.slice(1..-1).to_i
+        same_line = true if grid[(coord1[0].to_s)] == grid[(coord2[0].to_s)]
+        same_column = true if num1 == num2
+        if straight_line?(coord1, coord2)
+            return true if same_line and vessel.length == num2 - num1 + 1
+            return true if same_column and vessel.length == (@alphabet.index(coord2[0].to_s) - @alphabet.index(coord1[0].to_s) + 1)
+            return false
+        end
     end
 end
