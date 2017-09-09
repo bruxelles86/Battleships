@@ -39,8 +39,14 @@ describe Battlefield do
         expect(count_occupied).to eq(0)
     end
     
-    it 'does not place a ship if the gives coordinates fall outside the grid' do
+    it 'does not place a ship if the given coordinates fall outside the grid' do
         battlefield.place(vessel, :E10, :E12)
         expect(count_occupied).to eq(0)
+    end
+    
+    it 'does not place a ship if any of the given coordinates are already occupied' do
+        battlefield.place(vessel, :E1, :E3)
+        battlefield.place(vessel, :E3, :E5)
+        expect(count_occupied).to eq(3)
     end
 end

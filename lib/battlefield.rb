@@ -8,5 +8,8 @@ class Battlefield
     
     def place(vessel, coord1, coord2)
         
+        #  checks coordinates are straight vertically/horizontally, fit inside grid, match vessel length, and are vacant 
+        #  if all criteria are met, sets right grid squares 'occupied' fields to true
+
     end
 end
