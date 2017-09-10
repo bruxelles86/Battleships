@@ -8,14 +8,30 @@ class Battlefield
     end
     
     def place(vessel, coord1, coord2)
-
+        if valid_coords?(coord1, coord2, vessel)
+            num1 = coord1.to_s.slice(1..-1).to_i
+            num2 = coord2.to_s.slice(1..-1).to_i
+            same_line = true if grid[(coord1[0].to_s)] == grid[(coord2[0].to_s)]
+            same_column = true if num1 == num2
+            if same_line
+            grid[coord1[0].to_s][num1-1..num2-1].each do |square|
+                square.occupied = true
+                end
+            end
+            if same_column
+                lines = @alphabet[@alphabet.index(coord1[0].to_s)..@alphabet.index(coord2[0].to_s)]
+                lines.each do |line|
+                    grid[line][num1-1].occupied = true
+                end
+            end
+        end
     end
     
-    def valid_coords?(coord1, coord2, vessel, grid)
+    def valid_coords?(coord1, coord2, vessel)
         return false if straight_line?(coord1, coord2) == false
-        return false if within_grid?(coord1, coord2, grid) == false
-        return false if matches_vessel_length?(vessel, coord1, coord2, grid) == false
-        return false if coords_vacant?(coord1, coord2, grid) == false
+        return false if within_grid?(coord1, coord2, @grid) == false
+        return false if matches_vessel_length?(vessel, coord1, coord2, @grid) == false
+        return false if coords_vacant?(coord1, coord2, @grid) == false
         return true
     end
     

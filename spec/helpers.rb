@@ -20,6 +20,10 @@ module Helpers
       end
       return tally
    end
+   
+   def square
+       return FakeSquare.new
+   end
 end
 
 class FakeSquare
