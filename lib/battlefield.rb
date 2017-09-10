@@ -1,17 +1,22 @@
 class Battlefield
     attr_reader :grid
     
-    def initialize(grid_builder_class)
+    def initialize(grid_builder_class, square_class)
         @alphabet = 'A'.upto('Z').to_a
-        @grid_builder = grid_builder_class.new
+        @grid_builder = grid_builder_class.new(square_class)
         @grid = @grid_builder.new_grid
     end
     
     def place(vessel, coord1, coord2)
-        
-        #  checks coordinates are straight vertically/horizontally, fit inside grid, match vessel length, and are vacant 
-        #  if all criteria are met, sets right grid squares 'occupied' fields to true
 
+    end
+    
+    def valid_coords?(coord1, coord2, vessel, grid)
+        return false if straight_line?(coord1, coord2) == false
+        return false if within_grid?(coord1, coord2, grid) == false
+        return false if matches_vessel_length?(vessel, coord1, coord2, grid) == false
+        return false if coords_vacant?(coord1, coord2, grid) == false
+        return true
     end
     
     def straight_line?(coord1, coord2)
