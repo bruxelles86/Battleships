@@ -11,9 +11,8 @@ class Battlefield
         if valid_coords?(coord1, coord2, vessel)
             num1 = coord1.to_s.slice(1..-1).to_i
             num2 = coord2.to_s.slice(1..-1).to_i
-            same_line = true if grid[(coord1[0].to_s)] == grid[(coord2[0].to_s)]
             same_column = true if num1 == num2
-            if same_line
+            if same_line?(coord1, coord2)
             grid[coord1[0].to_s][num1-1..num2-1].each do |square|
                 square.occupied = true
                 end
@@ -25,6 +24,11 @@ class Battlefield
                 end
             end
         end
+    end
+    
+    def same_line?(coord1, coord2)
+        return true if @grid[(coord1[0].to_s)] == grid[(coord2[0].to_s)]
+        return false
     end
     
     def valid_coords?(coord1, coord2, vessel)
